@@ -53,10 +53,10 @@ $(document).ready(function() {
 $(function() {
 
     var data = [{
-        label: "Series 0",
-        data: 1
+        label: "Pasien",
+        data: 4
     }, {
-        label: "Series 1",
+        label: "Obat",
         data: 3
     }, {
         label: "Series 2",
@@ -64,9 +64,52 @@ $(function() {
     }, {
         label: "Series 3",
         data: 20
+      }, {
+          label: "Kebersihan",
+          data: 20
     }];
 
-    var plotObj = $.plot($("#flot-pie-chart"), data, {
+    var plotObj = $.plot($("#pie-chart-pemasukan"), data, {
+        series: {
+            pie: {
+                show: true
+            }
+        },
+        grid: {
+            hoverable: true
+        },
+        tooltip: true,
+        tooltipOpts: {
+            content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
+            shifts: {
+                x: 20,
+                y: 0
+            },
+            defaultTheme: false
+        }
+    });
+
+    var plotObj = $.plot($("#pie-chart-pengeluaran"), data, {
+        series: {
+            pie: {
+                show: true
+            }
+        },
+        grid: {
+            hoverable: true
+        },
+        tooltip: true,
+        tooltipOpts: {
+            content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
+            shifts: {
+                x: 20,
+                y: 0
+            },
+            defaultTheme: false
+        }
+    });
+
+    var plotObj = $.plot($("#pie-chart-treatment"), data, {
         series: {
             pie: {
                 show: true
