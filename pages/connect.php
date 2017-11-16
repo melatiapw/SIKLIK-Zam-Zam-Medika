@@ -12,9 +12,9 @@ if(isset($_SESSION['login_user'])){
 $user_check=$_SESSION['login_user'];
 
 // SQL Query To Fetch Complete Information Of User
-$ses_sql=mysql_query("select * from user where email='$user_check'", $connection);
+$ses_sql=mysql_query("select * from user where username='$user_check'", $connection);
 $row = mysql_fetch_array($ses_sql);
-$login_session =$row['nama'];
+$login_session =$row['username'];
 $getuserid = $row['id_user'];
 }
 if(!isset($login_session)){
