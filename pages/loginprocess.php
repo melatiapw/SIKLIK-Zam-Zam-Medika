@@ -29,13 +29,13 @@ if ($rows == 1) {
 ?>
 	<script language="javascript">alert("Success!"); document.location="index.php";</script>;
 <?php
-	//header("location: index.php"); // Redirecting To Other Page
-
-
-	//<script language="javascript">alert("Failed to login"); document.location="login.php";</script>;
-
+	header("location: index.php"); //Redirecting To Other Page
+}else{
+?>
+	<script language="javascript">alert("Failed to login"); document.location="login.php";</script>;
+<?php
 }
-mysql_close($connection); // Closing Connection
+mysqli_close($connection); // Closing Connection
 }
 }
 ?>
