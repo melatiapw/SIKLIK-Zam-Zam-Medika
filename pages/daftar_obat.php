@@ -143,6 +143,49 @@
                 <!-- /.col-lg-12 -->
             </div>
 
+<!--Tambah data pasien-->
+            <a data-toggle="modal" data-target="#TambahData" href="" class="btn btn-primary" style="margin-bottom:8px;">Tambah Obat</a>
+       
+                                        <div class="modal fade" id="TambahData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                            <div class="modal-dialog">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                  <h4 class="modal-title">Tambah Obat</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                  <form method="POST" >
+                                                      <label><b>Nama Obat</b></label><br>
+                                                      <input type="text" class="form-control" name="nama" required><br>
+                                                      <label><b>Stok Obat</b></label><br>
+                                                      <input type="text" class="form-control" name="stok"  required><br>
+                                                      <label><b>Harga Beli</b></label><br>
+                                                      <input type="text" class="form-control" name="hrgbeli"  required><br>
+                                                      <label><b>Harga Jual</b></label><br>
+                                                      <input type="text" class="form-control" name="hrgjual"  required><br>
+                                                  
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Batal</button>
+                                                  <input type="submit" class="btn btn-sm btn-success" value="Simpan" name="simpan"/>
+                                                </div>
+                                                </form>
+                                                <?php
+                                                if(@$_POST['simpan']){
+                                                $nama = $_POST['nama'];
+                                                $stok = $_POST['stok'];
+                                                $hrgbeli = $_POST ['hrgbeli'];
+                                                $hrgjual = $_POST ['hrgjual'];
+                                                  mysqli_query($connection, "INSERT INTO obat(nama_obat,stok_obat,harga_beli_obat,harga_jual_obat) values('$nama','$stok','$hrgbeli','$hrgjual')") or die ($connect->error);
+                                                    //header("location:?page=daftar_pasien");
+                                                }
+
+
+                                                ?>
+                                              </div>
+                                            </div>
+                                          </div>
+            <!--Tambah data pasien selesai-->
 
 
             <!-- /.row -->
@@ -185,11 +228,10 @@
                                         <td><?php echo $d['harga_jual_obat']; ?></td>
                                         <td>
                                           <div>
-                                            <a data-toggle="modal" data-target="#EditDesignerDataModal">
-                                            <i class="fa fa-pencil fa-fw"></i>Edit
-                                            </a>
-                                          </div>
-                                          <div class="modal fade" id="EditDesignerDataModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                            <a href="#edit<?php echo $d['id_obat']; ?>" data-toggle="modal"
+                                            class="btn btn-info" style="margin:8px;">Edit</a>
+
+                                          <div class="modal fade" id="edit<?php echo $d['id_obat'];?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                             <div class="modal-dialog">
                                               <div class="modal-content">
                                                 <div class="modal-header">
@@ -197,29 +239,49 @@
                                                   <h4 class="modal-title">Edit Data Obat</h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                  <form action="/action_page.php">
+                                                  <form method="POST">
                                                       
                                                       <input type="hidden" name="id" value="<?php echo $d['id_obat'];?>">
                                                       <label><b>Nama Obat</b></label><br>
-                                                      <input type="text" class="form-control" name="title" value="<?php echo $d['nama_obat'];?>" required><br>
+                                                      <input type="text" class="form-control" name="nama" value="<?php echo $d['nama_obat'];?>" required><br>
                                                       <label><b>Stok Obat</b></label><br>
-                                                      <input type="number" class="form-control" name="title" value="<?php echo $d['stok_obat'];?>" required><br>
+                                                      <input type="number" class="form-control" name="stok" value="<?php echo $d['stok_obat'];?>" required><br>
                                                       <label><b>Harga Beli</b></label><br>
-                                                      <input type="number" class="form-control" name="title" value="<?php echo $d['harga_beli_obat'];?>" required><br>
+                                                      <input type="number" class="form-control" name="hrgbeli" value="<?php echo $d['harga_beli_obat'];?>" required><br>
                                                       <label><b>Harga Jual</b></label><br>
-                                                      <input type="number" class="form-control" name="title" value="<?php echo $d['harga_jual_obat'];?>" required><br>
+                                                      <input type="number" class="form-control" name="hrgjual" value="<?php echo $d['harga_jual_obat'];?>" required><br>
                                                       
-                                          				</form>
+                                          				
                                                 </div>
                                                 <div class="modal-footer">
                                                   <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Batal</button>
-                                                  <button type="button" class="btn btn-sm btn-success">Simpan</button>
+                                                  <input type="submit" class="btn btn-sm btn-success" value="Edit" name="edit"/>
                                                 </div>
+                                              </form>
+                                               <?php
+
+                                          if(isset($_POST['edit'])){
+                                            $id = $_POST['id'];
+                                            $nama = $_POST['nama'];
+                                            $stok = $_POST['stok'];
+                                            $hrgbeli = $_POST ['hrgbeli'];
+                                            $hrgjual = $_POST ['hrgjual'];
+                                            $sql = "UPDATE obat SET 
+                                            nama_obat='$nama', stok_obat='$stok', harga_beli_obat='$hrgbeli', 
+                                            harga_jual_obat='$hrgjual' 
+                                            WHERE id_obat ='$id'";
+                                            if ($connect->query($sql) === TRUE) {
+                                                echo '<script>window.location.href="daftar_obat.php"</script>';
+                                            } else {
+                                                echo "Error updating record: " . $connect->error;
+                                            }
+                                        }
+
+                                                ?>
                                               </div>
                                             </div>
                                           </div>
-                                          <?php echo $d['id_obat'];?>
-                                          <a href="remove_obat.php?id=<?php echo $d['id_obat'] ?>"><i class="fa fa-close fa-fw"></i>Delete</a>
+                                          <a onclick="return confirm('Yakin ingin menghapus data pasien?')" href="remove_obat.php?id=<?php echo $d['id_obat'] ?>" class="btn btn-danger" style="margin:8px;">Delete</a>
                                         </td>
                                     </tr>
 <?php 

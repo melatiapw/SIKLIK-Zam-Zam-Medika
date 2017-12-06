@@ -54,7 +54,7 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="index.php">Sistem Informasi Klinik Zam-Zam Medika</a>
+              <a class="navbar-brand" href="index.html">Sistem Informasi Klinik Zam-Zam Medika</a>
           </div>
           <!-- /.navbar-header -->
 
@@ -69,7 +69,7 @@
                       <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                       </li>
                       <li class="divider"></li>
-                      <li><a href="login.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                      <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                       </li>
                   </ul>
                   <!-- /.dropdown-user -->
@@ -93,37 +93,37 @@
                           <!-- /input-group -->
                       </li>
                       <li>
-                          <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                          <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                       </li>
                       <li>
-                          <a href="tables.php"><i class="fa fa-table fa-fw"></i> Pasien<span class="fa arrow"></span></a>
+                          <a href="tables.html"><i class="fa fa-table fa-fw"></i> Pasien<span class="fa arrow"></span></a>
                           <ul class="nav nav-second-level">
                               <li>
-                                  <a href="daftar_pasien.php">Daftar Pasien</a>
+                                  <a href="daftar_html.html">Daftar Pasien</a>
                               </li>
                               <li>
-                                  <a href="buku_pasien.php">Buku Register Pasien</a>
+                                  <a href="buku_pasien.html">Buku Register Pasien</a>
                               </li>
                               <li>
-                                  <a href="laporan_kunjungan.php">Laporan Kunjungan Pasien</a>
+                                  <a href="laporan_kunjungan.html">Laporan Kunjungan Pasien</a>
                               </li>
                           </ul>
                           <!-- /.nav-second-level -->
                       </li>
                       <li>
-                          <a href="laporan_keuangan.php"><i class="fa fa-edit fa-fw"></i>Laporan Keuangan</a>
+                          <a href="laporan_keuangan.html"><i class="fa fa-edit fa-fw"></i>Laporan Keuangan</a>
                       </li>
                       <li>
-                          <a href="daftar_dokter.php"><i class="fa fa-edit fa-fw"></i> Dokter</a>
+                          <a href="dokter.html"><i class="fa fa-edit fa-fw"></i> Dokter</a>
                       </li>
                       <li>
-                          <a href="obst_pemeriksaan.php"><i class="fa fa-sitemap fa-fw"></i>Obat dan Pemeriksaan<span class="fa arrow"></span></a>
+                          <a href="obst_pemeriksaan.html"><i class="fa fa-sitemap fa-fw"></i>Obat dan Pemeriksaan<span class="fa arrow"></span></a>
                           <ul class="nav nav-second-level">
                               <li>
-                                  <a href="daftar_obat.php">Daftar Obat</a>
+                                  <a href="daftar_obat.html">Daftar Obat</a>
                               </li>
                               <li>
-                                  <a href="daftar_pemeriksaan.php">Daftar Jenis Pemeriksaan</a>
+                                  <a href="daftar_pemeriksaan.html">Daftar Jenis Pemeriksaan</a>
                               </li>
                           </ul>
                           <!-- /.nav-second-level -->
@@ -200,6 +200,8 @@
             <!--Tambah data pasien selesai-->
 
 
+
+
             <!--Tampil data pasien-->
             <div class="row">
                 <div class="col-lg-12">
@@ -241,11 +243,75 @@
                                         <td>
                                         <!--Tampil data pasien selesai-->
 
-                                        <!--Edit data pasien selesai-->
+
+
+
+                                        <!--Edit data pasien-->
                                           <div>
-                                            <a href="edit.php&id=<?php echo $rows['id_pasien']; ?>"
-                                            class="btn btn-info" style="margin:8px;">Edit</a>   
+                                            <a href="#edit<?php echo $rows['id_pasien']; ?>" data-toggle="modal"
+                                            class="btn btn-info" style="margin:8px;">Edit</a>
+
+                                          <div class="modal fade" id="edit<?php echo $rows['id_pasien'];?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                            <div class="modal-dialog">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                  <h4 class="modal-title">Edit Data Pasien</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                  <form method="POST">
+                                                      <label><b>Nama Pasien</b></label><br>
+                                                      <input type="hidden" name="id" value="<?php echo $rows['id_pasien']; ?>" >
+                                                      <input type="text" class="form-control" name="pasien" value="<?php echo $rows['nama_pasien']; ?>" required><br>
+                                                      <label><b>Golongan Darah</b></label><br>
+                                                      <input type="text" class="form-control" name="goldar" value="<?php echo $rows['golongan_darah']; ?>" required><br>
+                                                      <label><b>Umur</b></label><br>
+                                                      <input type="text" class="form-control" name="umur" value="<?php echo $rows['umur']; ?>" required><br>
+                                                      <label><b>Jenis Kelamin</b></label><br>
+                                                      <input type="text" class="form-control" name="jk" value="<?php echo $rows['jenis_kelamin']; ?>" required><br>
+                                                      <label><b>Tensi Darah</b></label><br>
+                                                      <input type="text" class="form-control" name="tensi" value="<?php echo $rows['tensi_darah']; ?>" required><br>
+                                                      <label><b>Alamat</b></label><br>
+                                                      <input type="text" class="form-control" name="alamat" value="<?php echo $rows['alamat']; ?>" required><br>
+                                                      <label><b>No HP</b></label><br>
+                                                      <input type="text" class="form-control" name="nomor" value="<?php echo $rows['no_telpon']; ?>" required><br>
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Batal</button>
+                                                  <input type="submit" class="btn btn-sm btn-success" value="Edit" name="edit"/>
+                                                </div>
+                                              </form>
+                                               <?php
+
+                                          if(isset($_POST['edit'])){
+                                            $id = $_POST['id'];
+                                            $pasien = $_POST['pasien'];
+                                            $goldar = $_POST['goldar'];
+                                            $umur = $_POST ['umur'];
+                                            $jk = $_POST ['jk'];
+                                            $tensi = $_POST ['tensi'];
+                                            $alamat = $_POST ['alamat'];
+                                            $nomor = $_POST ['nomor'];
+                                            $sql = "UPDATE pasien SET 
+                                            nama_pasien='$pasien', golongan_darah='$goldar', umur='$umur', 
+                                            jenis_kelamin='$jk', tensi_darah='$tensi', alamat='$alamat', no_telpon='$nomor' 
+                                            WHERE id_pasien ='$id'";
+                                            if ($connect->query($sql) === TRUE) {
+                                                echo '<script>window.location.href="daftar_pasien.php"</script>';
+                                            } else {
+                                                echo "Error updating record: " . $connect->error;
+                                            }
+                                        }
+
+                                                ?>
+
+                                              </div>
+                                            </div>
+                                          </div>   
                                         <!--Edit data pasien selesai-->
+
+
 
                                         <!--Delete data pasien-->                                      
                                             <a onclick="return confirm('Yakin ingin menghapus data pasien?')" href="hub_delete_pasien.php?id=<?php echo $rows['id_pasien'] ?>" class="btn btn-danger" style="margin:8px;">Delete</a>
