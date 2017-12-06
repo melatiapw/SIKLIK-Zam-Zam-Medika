@@ -111,7 +111,7 @@
                           <a href="laporan_keuangan.php"><i class="fa fa-edit fa-fw"></i>Laporan Keuangan</a>
                       </li>
                       <li>
-                          <a href="dokter.php"><i class="fa fa-edit fa-fw"></i> Dokter</a>
+                          <a href="daftar_dokter.php"><i class="fa fa-edit fa-fw"></i> Dokter</a>
                       </li>
                       <li>
                           <a href="obat_pemeriksaan.php"><i class="fa fa-sitemap fa-fw"></i>Obat dan Pemeriksaan<span class="fa arrow"></span></a>
@@ -136,91 +136,26 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Daftar Pemeriksaan</h1>
+                    <h1 class="page-header">Laporan Keuangan Bulanan</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-12">
+            <div class="col-lg-12">
                     <div class="panel panel-default">
+                        <div class="panel-heading">
+                            
+                        </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                <thead>
-                                    <tr>
-                                        <th rowspan="2">ID Pemeriksaan</th>
-                                        <th rowspan="2">Nama Pemeriksaan</th>
-                                        <th colspan="3">Biaya</th>
-                                        <th rowspan="2">Total Biaya</th>
-                                        <th></th>
-                                    </tr>
-                                    <tr>
-                                        <th>Klinik</th>
-                                        <th>Dokter</th>
-                                        <th>Administrasi</th>                                        
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>001_01092017</td>
-                                        <td>Jodhi Lesmana</td>
-                                        <td>O</td>
-                                        <td>20</td>
-                                        <td>L</td>
-                                        <td>120/80</td>
-                                        <td>
-                                          <div>
-                                            <a data-toggle="modal" data-target="#EditDesignerDataModal">
-                                            <i class="fa fa-pencil fa-fw"></i>Edit
-                                            </a>
-                                          </div>
-                                          <div class="modal fade" id="EditDesignerDataModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                            <div class="modal-dialog">
-                                              <div class="modal-content">
-                                                <div class="modal-header">
-                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                  <h4 class="modal-title">Edit Data Pasien</h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                  <form action="/action_page.php">
-                                                      <label><b>ID Pemeriksaan</b></label><br>
-                                                      <input type="text" class="form-control" name="title" value="wahyu_nugraha" required><br>
-                                                      <label><b>Nama Pemeriksaan</b></label><br>
-                                                      <input type="password" class="form-control" name="title" value="wahyu" required><br>
-                                                      <label><b>Biaya</b></label><br>
-                                                      <!-- <input type="text" class="form-control" name="title" value="Wahyu" required><br> -->
-                                                      <label><b>Klinik</b></label>
-                                                      <input type="text" class="form-control" name="title" value="Nugraha" required><br>
-                                                      <label><b>Dokter</b></label>
-                                                      <input type="text" class="form-control" name="title" value="wahyunugraha@gmail.com" required><br>
-                                                      <label><b>Administrasi</b></label>
-                                                      <input type="text" class="form-control" name="title" value="089977665544" required><br>
-                                                      <label><b>Total Biaya</b></label><br>
-                                                      <input type="text" class="form-control" name="title" value="089977665544" required><br>
-                                          				</form>
-                                                </div>
-                                                <div class="modal-footer">
-                                                  <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Batal</button>
-                                                  <button type="button" class="btn btn-sm btn-success">Simpan</button>
-                                                </div>
-                                              </div>
-                                            </div>
-                                          </div>
-                                          <a href=""><i class="fa fa-close fa-fw"></i>Delete</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="flot-chart">
+                                <div class="flot-chart-content" id="flot-line-chart"></div>
+                            </div>
                         </div>
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
                 </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-        </div>
         <!-- /#page-wrapper -->
 
     </div>
@@ -242,6 +177,15 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
+
+    <!-- Flot Charts JavaScript -->
+    <script src="../vendor/flot/excanvas.min.js"></script>
+    <script src="../vendor/flot/jquery.flot.js"></script>
+    <script src="../vendor/flot/jquery.flot.pie.js"></script>
+    <script src="../vendor/flot/jquery.flot.resize.js"></script>
+    <script src="../vendor/flot/jquery.flot.time.js"></script>
+    <script src="../vendor/flot-tooltip/jquery.flot.tooltip.min.js"></script>
+    <script src="../data/flot-data.js"></script>
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
