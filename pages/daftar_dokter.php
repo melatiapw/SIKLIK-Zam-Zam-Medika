@@ -1,6 +1,3 @@
-<?php
-      include 'connect.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -117,7 +114,7 @@
                           <a href="daftar_dokter.php"><i class="fa fa-edit fa-fw"></i> Dokter</a>
                       </li>
                       <li>
-                          <a href="obst_pemeriksaan.php"><i class="fa fa-sitemap fa-fw"></i>Obat dan Pemeriksaan<span class="fa arrow"></span></a>
+                          <a href="obat_pemeriksaan.php"><i class="fa fa-sitemap fa-fw"></i>Obat dan Pemeriksaan<span class="fa arrow"></span></a>
                           <ul class="nav nav-second-level">
                               <li>
                                   <a href="daftar_obat.php">Daftar Obat</a>
@@ -144,63 +141,6 @@
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
-
-
-            <!--Tambah data pasien-->
-            <a data-toggle="modal" data-target="#TambahData" href="" class="btn btn-primary" style="margin-bottom:8px;">Tambah Pasien</a>
-       
-                                        <div class="modal fade" id="TambahData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                            <div class="modal-dialog">
-                                              <div class="modal-content">
-                                                <div class="modal-header">
-                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                  <h4 class="modal-title">Tambah Data Pasien</h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                  <form method="POST" >
-                                                      <label><b>Nama Pasien</b></label><br>
-                                                      <input type="text" class="form-control" name="pasien" required><br>
-                                                      <label><b>Golongan Darah</b></label><br>
-                                                      <input type="text" class="form-control" name="goldar"  required><br>
-                                                      <label><b>Umur</b></label><br>
-                                                      <input type="text" class="form-control" name="umur"  required><br>
-                                                      <label><b>Jenis Kelamin</b></label><br>
-                                                      <input type="text" class="form-control" name="jk"  required><br>
-                                                      <label><b>Tensi Darah</b></label><br>
-                                                      <input type="text" class="form-control" name="tensi"  required><br>
-                                                      <label><b>Alamat</b></label><br>
-                                                      <input type="text" class="form-control" name="alamat"  required><br>
-                                                      <label><b>No HP</b></label><br>
-                                                      <input type="text" class="form-control" name="nomor"  required><br>
-                                                  
-                                                </div>
-                                                <div class="modal-footer">
-                                                  <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Batal</button>
-                                                  <input type="submit" class="btn btn-sm btn-success" value="Simpan" name="simpan"/>
-                                                </div>
-                                                </form>
-                                                <?php
-                                                if(@$_POST['simpan']){
-                                                  $pasien = @$_POST ['pasien'];
-                                                  $goldar = @$_POST ['goldar'];
-                                                  $umur = @$_POST ['umur'];
-                                                  $jk = @$_POST ['jk'];
-                                                  $tensi = @$_POST ['tensi'];
-                                                  $alamat = @$_POST ['alamat'];
-                                                  $nomor = @$_POST ['nomor'];
-                                                  mysqli_query($connect, "INSERT INTO pasien(nama_pasien,golongan_darah,umur,jenis_kelamin,tensi_darah,alamat,no_telpon) values('$pasien','$goldar','$umur','$jk','$tensi','$alamat','$nomor')") or die ($connect->error);
-                                                    //header("location:?page=daftar_pasien");
-                                                }
-
-
-                                                ?>
-                                              </div>
-                                            </div>
-                                          </div>
-            <!--Tambah data pasien selesai-->
-
-
-            <!--Tampil data pasien-->
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
@@ -209,54 +149,59 @@
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                        <th>ID Pasien</th>
-                                        <th>Nama Pasien</th>
-                                        <th>Golongan Darah</th>
-                                        <th>Usia</th>
-                                        <th>Jenis Kelamin</th>
-                                        <th>Tensi Darah (mmHg)</th>
-                                        <th>Alamat</th>
+                                        <th>ID Dokter</th>
+                                        <th>Nama Dokter</th>
                                         <th>No HP</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php
-                                      $sql = "SELECT * FROM pasien  ORDER BY id_pasien ASC" ;
-                                      $jalan = mysqli_query($connect, $sql);
-  
-                                      while ($rows = mysqli_fetch_array($jalan)){
-                                    ?>
                                     <tr>
-                                        <td><?php echo $rows['id_pasien']; ?></td>
-                                        
-                                        <td><?php echo $rows['nama_pasien']; ?></td>
-                                        
-                                        <td><?php echo $rows['golongan_darah']; ?></td>
-                                        <td><?php echo $rows['umur']; ?></td>
-                                        <td><?php echo $rows['jenis_kelamin']; ?></td>
-                                        <td><?php echo $rows['tensi_darah']; ?></td>
-                                        <td><?php echo $rows['alamat']; ?></td>
-                                        <td><?php echo $rows['no_telpon']; ?></td>
+                                        <td>001_01092017</td>
+                                        <td>Jodhi Lesmana</td>
+                                        <td>082934567821</td>
                                         <td>
-                                        <!--Tampil data pasien selesai-->
-
-                                        <!--Edit data pasien selesai-->
                                           <div>
-                                            <a href="edit.php&id=<?php echo $rows['id_pasien']; ?>"
-                                            class="btn btn-info" style="margin:8px;">Edit</a>   
-                                        <!--Edit data pasien selesai-->
-
-                                        <!--Delete data pasien-->                                      
-                                            <a onclick="return confirm('Yakin ingin menghapus data pasien?')" href="hub_delete_pasien.php?id=<?php echo $rows['id_pasien'] ?>" class="btn btn-danger" style="margin:8px;">Delete</a>
-                                        <!--Delete data pasien selesai-->
-
-
+                                            <a data-toggle="modal" data-target="#EditDesignerDataModal">
+                                            <i class="fa fa-pencil fa-fw"></i>Edit
+                                            </a>
                                           </div>
+                                          <div class="modal fade" id="EditDesignerDataModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                            <div class="modal-dialog">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                  <h4 class="modal-title">Edit Data Pasien</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                  <form action="/action_page.php">
+                                                      <label><b>Nama Pasien</b></label><br>
+                                                      <input type="text" class="form-control" name="title" value="wahyu_nugraha" required><br>
+                                                      <label><b>Golongan Darah</b></label><br>
+                                                      <input type="password" class="form-control" name="title" value="wahyu" required><br>
+                                                      <label><b>Umur</b></label><br>
+                                                      <input type="text" class="form-control" name="title" value="Wahyu" required><br>
+                                                      <label><b>Jenis Kelamin</b></label><br>
+                                                      <input type="text" class="form-control" name="title" value="Nugraha" required><br>
+                                                      <label><b>Tensi Darah</b></label><br>
+                                                      <input type="text" class="form-control" name="title" value="wahyunugraha@gmail.com" required><br>
+                                                      <label><b>Alamat</b></label><br>
+                                                      <input type="text" class="form-control" name="title" value="089977665544" required><br>
+                                                      <label><b>No HP</b></label><br>
+                                                      <input type="text" class="form-control" name="title" value="089977665544" required><br>
+                                          				</form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Batal</button>
+                                                  <button type="button" class="btn btn-sm btn-success">Simpan</button>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <a href=""><i class="fa fa-close fa-fw"></i>Delete</a>
                                         </td>
                                     </tr>
-                                    <?php }  ?>                                
-                                  </tbody>
+                                </tbody>
                             </table>
                         </div>
                         <!-- /.panel-body -->
@@ -266,10 +211,6 @@
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
-
-            
-
-
         </div>
         <!-- /#page-wrapper -->
 
