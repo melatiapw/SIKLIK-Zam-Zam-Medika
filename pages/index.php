@@ -68,9 +68,15 @@
                         </li>
                         <li class="divider"></li>
 <<<<<<< HEAD
+<<<<<<< HEAD
                         <li><a href="login.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
 =======
                         <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+>>>>>>> GabBranch
+=======
+
+                        <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+
 >>>>>>> GabBranch
                         </li>
                     </ul>
@@ -101,7 +107,9 @@
                             <a href="tables.php"><i class="fa fa-table fa-fw"></i> Pasien<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
+
                                     <a href="daftar_pasien.php">Daftar Pasien</a>
+
                                 </li>
                                 <li>
                                     <a href="buku_pasien.php">Buku Register Pasien</a>
@@ -117,9 +125,13 @@
                         </li>
                         <li>
                             <a href="dokter.php"><i class="fa fa-edit fa-fw"></i> Dokter</a>
+
+                            <a href="daftar_dokter.php"><i class="fa fa-edit fa-fw"></i> Dokter</a>
                         </li>
                         <li>
                             <a href="obat_pemeriksaan.php"><i class="fa fa-sitemap fa-fw"></i>Obat dan Pemeriksaan<span class="fa arrow"></span></a>
+                            <a href="obst_pemeriksaan.php"><i class="fa fa-sitemap fa-fw"></i>Obat dan Pemeriksaan<span class="fa arrow"></span></a>
+
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="daftar_obat.php">Daftar Obat</a>
