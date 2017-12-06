@@ -67,17 +67,9 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        <li><a href="login.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-=======
-                        <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
->>>>>>> GabBranch
-=======
 
                         <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
 
->>>>>>> GabBranch
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -124,12 +116,10 @@
                             <a href="laporan_keuangan.php"><i class="fa fa-edit fa-fw"></i>Laporan Keuangan</a>
                         </li>
                         <li>
-                            <a href="dokter.php"><i class="fa fa-edit fa-fw"></i> Dokter</a>
 
                             <a href="daftar_dokter.php"><i class="fa fa-edit fa-fw"></i> Dokter</a>
                         </li>
                         <li>
-                            <a href="obat_pemeriksaan.php"><i class="fa fa-sitemap fa-fw"></i>Obat dan Pemeriksaan<span class="fa arrow"></span></a>
                             <a href="obst_pemeriksaan.php"><i class="fa fa-sitemap fa-fw"></i>Obat dan Pemeriksaan<span class="fa arrow"></span></a>
 
                             <ul class="nav nav-second-level">

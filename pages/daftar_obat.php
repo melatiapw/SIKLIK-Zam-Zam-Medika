@@ -92,7 +92,6 @@
                           <!-- /input-group -->
                       </li>
                       <li>
-
                           <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                       </li>
                       <li>
@@ -106,13 +105,11 @@
                               </li>
                               <li>
                                   <a href="laporan_kunjungan.php">Laporan Kunjungan Pasien</a>
-
                               </li>
                           </ul>
                           <!-- /.nav-second-level -->
                       </li>
                       <li>
-
                           <a href="laporan_keuangan.php"><i class="fa fa-edit fa-fw"></i>Laporan Keuangan</a>
                       </li>
                       <li>
@@ -197,7 +194,6 @@
                                               <div class="modal-content">
                                                 <div class="modal-header">
                                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-
                                                   <h4 class="modal-title">Edit Data Obat</h4>
                                                 </div>
                                                 <div class="modal-body">
