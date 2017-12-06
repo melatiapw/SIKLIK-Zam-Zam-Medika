@@ -118,7 +118,7 @@
                             <a href="obst_pemeriksaan.html"><i class="fa fa-sitemap fa-fw"></i>Obat dan Pemeriksaan<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="daftar_obat.html">Daftar Obat</a>
+                                    <a href="daftar_obat.php">Daftar Obat</a>
                                 </li>
                                 <li>
                                     <a href="daftar_pemeriksaan.html">Daftar Jenis Pemeriksaan</a>
