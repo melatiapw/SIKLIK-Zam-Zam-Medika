@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php 
+    include 'connect.php';
+?>
+
 <head>
 
     <meta charset="utf-8">
@@ -48,7 +52,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Sistem Informasi Klinik Zam-Zam Medika</a>
+                <a class="navbar-brand" href="index.php">Sistem Informasi Klinik Zam-Zam Medika</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -63,7 +67,7 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -87,7 +91,7 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
                             <a href="tables.html"><i class="fa fa-table fa-fw"></i> Pasien<span class="fa arrow"></span></a>
@@ -114,7 +118,7 @@
                             <a href="obst_pemeriksaan.html"><i class="fa fa-sitemap fa-fw"></i>Obat dan Pemeriksaan<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="daftar_obat.html">Daftar Obat</a>
+                                    <a href="daftar_obat.php">Daftar Obat</a>
                                 </li>
                                 <li>
                                     <a href="daftar_pemeriksaan.html">Daftar Jenis Pemeriksaan</a>
@@ -146,7 +150,12 @@
                                     <i class="fa fa-users fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">261</div>
+                                    <div class="huge"><?php 
+                                        $pasien_query = "SELECT * FROM pasien";
+                                        $query = mysqli_query($connection, $pasien_query);
+                                        $total_pasien = mysqli_num_rows($query);
+                                        echo $total_pasien;
+                                    ?></div>
                                     <div>Pasien Terdaftar</div>
                                 </div>
                             </div>
