@@ -198,14 +198,16 @@
                                                 </div>
                                                 <div class="modal-body">
                                                   <form action="/action_page.php">
+                                                      
+                                                      <input type="hidden" name="id" value="<?php echo $d['id_obat'];?>">
                                                       <label><b>Nama Obat</b></label><br>
-                                                      <input type="text" class="form-control" name="title" value="Paracetamol" required><br>
+                                                      <input type="text" class="form-control" name="title" value="<?php echo $d['nama_obat'];?>" required><br>
                                                       <label><b>Stok Obat</b></label><br>
-                                                      <input type="number" class="form-control" name="title" value="20" required><br>
+                                                      <input type="number" class="form-control" name="title" value="<?php echo $d['stok_obat'];?>" required><br>
                                                       <label><b>Harga Beli</b></label><br>
-                                                      <input type="number" class="form-control" name="title" value="Wahyu" required><br>
+                                                      <input type="number" class="form-control" name="title" value="<?php echo $d['harga_beli_obat'];?>" required><br>
                                                       <label><b>Harga Jual</b></label><br>
-                                                      <input type="number" class="form-control" name="title" value="Nugraha" required><br>
+                                                      <input type="number" class="form-control" name="title" value="<?php echo $d['harga_jual_obat'];?>" required><br>
                                                       
                                           				</form>
                                                 </div>
@@ -216,7 +218,8 @@
                                               </div>
                                             </div>
                                           </div>
-                                          <a href=""><i class="fa fa-close fa-fw"></i>Delete</a>
+                                          <?php echo $d['id_obat'];?>
+                                          <a href="remove_obat.php?id=<?php echo $d['id_obat'] ?>"><i class="fa fa-close fa-fw"></i>Delete</a>
                                         </td>
                                     </tr>
 <?php 
