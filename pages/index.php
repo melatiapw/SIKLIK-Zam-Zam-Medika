@@ -67,11 +67,9 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-<<<<<<< HEAD
+
                         <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-=======
-                        <li><a href="login.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
->>>>>>> Ikiw
+
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -101,11 +99,9 @@
                             <a href="tables.php"><i class="fa fa-table fa-fw"></i> Pasien<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-<<<<<<< HEAD
-                                    <a href="daftar_html.php">Daftar Pasien</a>
-=======
+
                                     <a href="daftar_pasien.php">Daftar Pasien</a>
->>>>>>> 04aa555f024f8a428c5eb43eda02e77aec0a88d2
+
                                 </li>
                                 <li>
                                     <a href="buku_pasien.php">Buku Register Pasien</a>
@@ -120,17 +116,12 @@
                             <a href="laporan_keuangan.php"><i class="fa fa-edit fa-fw"></i>Laporan Keuangan</a>
                         </li>
                         <li>
-<<<<<<< HEAD
+
                             <a href="daftar_dokter.php"><i class="fa fa-edit fa-fw"></i> Dokter</a>
                         </li>
                         <li>
                             <a href="obst_pemeriksaan.php"><i class="fa fa-sitemap fa-fw"></i>Obat dan Pemeriksaan<span class="fa arrow"></span></a>
-=======
-                            <a href="dokter.php"><i class="fa fa-edit fa-fw"></i> Dokter</a>
-                        </li>
-                        <li>
-                            <a href="obat_pemeriksaan.php"><i class="fa fa-sitemap fa-fw"></i>Obat dan Pemeriksaan<span class="fa arrow"></span></a>
->>>>>>> 04aa555f024f8a428c5eb43eda02e77aec0a88d2
+
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="daftar_obat.php">Daftar Obat</a>
