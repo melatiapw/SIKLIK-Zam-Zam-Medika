@@ -143,6 +143,9 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
+
+
+
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
@@ -165,12 +168,22 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+<?php
+  $no = 1;
+  $sql = "SELECT * FROM obat";
+  $data = mysqli_query($connection, $sql);
+
+  if (mysqli_num_rows($data)==0){
+    echo 'Belum ada obat terdaftar';
+  }else{
+    while($d = mysqli_fetch_assoc($data)){
+?>
                                     <tr>
-                                        <td>001_01092017</td>
-                                        <td>Jodhi Lesmana</td>
-                                        <td>O</td>
-                                        <td>20</td>
-                                        <td>30</td>
+                                        <td><?php echo $d['id_obat']; ?></td>
+                                        <td><?php echo $d['nama_obat']; ?></td>
+                                        <td><?php echo $d['stok_obat']; ?></td>
+                                        <td><?php echo $d['harga_beli_obat']; ?></td>
+                                        <td><?php echo $d['harga_jual_obat']; ?></td>
                                         <td>
                                           <div>
                                             <a data-toggle="modal" data-target="#EditDesignerDataModal">
@@ -212,6 +225,10 @@
                                           <a href=""><i class="fa fa-close fa-fw"></i>Delete</a>
                                         </td>
                                     </tr>
+<?php 
+      }
+    } 
+?>
                                 </tbody>
                             </table>
                         </div>
@@ -221,6 +238,7 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
+
             <!-- /.row -->
         </div>
         <!-- /#page-wrapper -->
