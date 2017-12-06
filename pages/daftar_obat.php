@@ -51,7 +51,7 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="index.php">Sistem Informasi Klinik Zam-Zam Medika</a>
+              <a class="navbar-brand" href="index.html">Sistem Informasi Klinik Zam-Zam Medika</a>
           </div>
           <!-- /.navbar-header -->
 
@@ -66,7 +66,7 @@
                       <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                       </li>
                       <li class="divider"></li>
-                      <li><a href="login.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                      <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                       </li>
                   </ul>
                   <!-- /.dropdown-user -->
@@ -136,7 +136,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Daftar Pasien</h1>
+                    <h1 class="page-header">Daftar Obat</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -149,17 +149,25 @@
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                        <th>ID Dokter</th>
-                                        <th>Nama Dokter</th>
-                                        <th>No HP</th>
+                                        <th align="right" rowspan="2">ID Obat</th>
+                                        <th align="center" rowspan="2">Nama Obat</th>
+                                        <th align="center" rowspan="2">Stok Obat</th>
+                                        <th align="center" colspan="2">Harga Obat</th>
                                         <th></th>
+                                    </tr>
+                                    <tr>
+                                      <th>Harga Beli</th>
+                                      <th>Harga Jual</th>
+                                      <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>001_01092017</td>
-                                        <td>Jodhi Lesmana</td>
-                                        <td>082934567821</td>
+                                        <td>Parasetamol</td>
+                                        <td>10</td>
+                                        <td>1500</td>
+                                        <td>2000</td>
                                         <td>
                                           <div>
                                             <a data-toggle="modal" data-target="#EditDesignerDataModal">
@@ -171,24 +179,24 @@
                                               <div class="modal-content">
                                                 <div class="modal-header">
                                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                  <h4 class="modal-title">Edit Data Pasien</h4>
+                                                  <h4 class="modal-title">Edit Data Obat</h4>
                                                 </div>
                                                 <div class="modal-body">
                                                   <form action="/action_page.php">
-                                                      <label><b>Nama Pasien</b></label><br>
-                                                      <input type="text" class="form-control" name="title" value="wahyu_nugraha" required><br>
-                                                      <label><b>Golongan Darah</b></label><br>
-                                                      <input type="password" class="form-control" name="title" value="wahyu" required><br>
-                                                      <label><b>Umur</b></label><br>
-                                                      <input type="text" class="form-control" name="title" value="Wahyu" required><br>
-                                                      <label><b>Jenis Kelamin</b></label><br>
-                                                      <input type="text" class="form-control" name="title" value="Nugraha" required><br>
-                                                      <label><b>Tensi Darah</b></label><br>
+                                                      <label><b>Nama Obat</b></label><br>
+                                                      <input type="text" class="form-control" name="title" value="Parasetamol" required><br>
+                                                      <label><b>Stok Obat</b></label><br>
+                                                      <input type="text" class="form-control" name="title" value="20" required><br>
+                                                      <label><b>Harga Beli</b></label><br>
+                                                      <input type="text" class="form-control" name="title" value="1500/pcs" required><br>
+                                                      <label><b>Harga Jual</b></label><br>
+                                                      <input type="text" class="form-control" name="title" value="2000/pcs" required><br>
+                                                 <!-- <label><b>Tensi Darah</b></label><br>
                                                       <input type="text" class="form-control" name="title" value="wahyunugraha@gmail.com" required><br>
                                                       <label><b>Alamat</b></label><br>
                                                       <input type="text" class="form-control" name="title" value="089977665544" required><br>
                                                       <label><b>No HP</b></label><br>
-                                                      <input type="text" class="form-control" name="title" value="089977665544" required><br>
+                                                      <input type="text" class="form-control" name="title" value="089977665544" required><br> -->
                                           				</form>
                                                 </div>
                                                 <div class="modal-footer">
