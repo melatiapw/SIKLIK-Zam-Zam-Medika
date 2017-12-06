@@ -90,37 +90,37 @@
                           <!-- /input-group -->
                       </li>
                       <li>
-                          <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                          <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                       </li>
                       <li>
-                          <a href="tables.php"><i class="fa fa-table fa-fw"></i> Pasien<span class="fa arrow"></span></a>
+                          <a href="tables.html"><i class="fa fa-table fa-fw"></i> Pasien<span class="fa arrow"></span></a>
                           <ul class="nav nav-second-level">
                               <li>
-                                  <a href="daftar_pasien.php">Daftar Pasien</a>
+                                  <a href="daftar_html.html">Daftar Pasien</a>
                               </li>
                               <li>
-                                  <a href="buku_pasien.php">Buku Register Pasien</a>
+                                  <a href="buku_pasien.html">Buku Register Pasien</a>
                               </li>
                               <li>
-                                  <a href="laporan_kunjungan.php">Laporan Kunjungan Pasien</a>
+                                  <a href="laporan_kunjungan.html">Laporan Kunjungan Pasien</a>
                               </li>
                           </ul>
                           <!-- /.nav-second-level -->
                       </li>
                       <li>
-                          <a href="laporan_keuangan.php"><i class="fa fa-edit fa-fw"></i>Laporan Keuangan</a>
+                          <a href="laporan_keuangan.html"><i class="fa fa-edit fa-fw"></i>Laporan Keuangan</a>
                       </li>
                       <li>
-                          <a href="daftar_dokter.php"><i class="fa fa-edit fa-fw"></i> Dokter</a>
+                          <a href="dokter.html"><i class="fa fa-edit fa-fw"></i> Dokter</a>
                       </li>
                       <li>
-                          <a href="obat_pemeriksaan.php"><i class="fa fa-sitemap fa-fw"></i>Obat dan Pemeriksaan<span class="fa arrow"></span></a>
+                          <a href="obst_pemeriksaan.html"><i class="fa fa-sitemap fa-fw"></i>Obat dan Pemeriksaan<span class="fa arrow"></span></a>
                           <ul class="nav nav-second-level">
                               <li>
-                                  <a href="daftar_obat.php">Daftar Obat</a>
+                                  <a href="daftar_obat.html">Daftar Obat</a>
                               </li>
                               <li>
-                                  <a href="daftar_pemeriksaan.php">Daftar Jenis Pemeriksaan</a>
+                                  <a href="daftar_pemeriksaan.html">Daftar Jenis Pemeriksaan</a>
                               </li>
                           </ul>
                           <!-- /.nav-second-level -->
@@ -140,6 +140,9 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
+
+
+
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
@@ -162,12 +165,22 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+<?php
+  $no = 1;
+  $sql = "SELECT * FROM obat";
+  $data = mysqli_query($connection, $sql);
+
+  if (mysqli_num_rows($data)==0){
+    echo 'Belum ada obat terdaftar';
+  }else{
+    while($d = mysqli_fetch_assoc($data)){
+?>
                                     <tr>
-                                        <td>001_01092017</td>
-                                        <td>Parasetamol</td>
-                                        <td>10</td>
-                                        <td>1500</td>
-                                        <td>2000</td>
+                                        <td><?php echo $d['id_obat']; ?></td>
+                                        <td><?php echo $d['nama_obat']; ?></td>
+                                        <td><?php echo $d['stok_obat']; ?></td>
+                                        <td><?php echo $d['harga_beli_obat']; ?></td>
+                                        <td><?php echo $d['harga_jual_obat']; ?></td>
                                         <td>
                                           <div>
                                             <a data-toggle="modal" data-target="#EditDesignerDataModal">
@@ -179,24 +192,24 @@
                                               <div class="modal-content">
                                                 <div class="modal-header">
                                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                  <h4 class="modal-title">Edit Data Obat</h4>
+                                                  <h4 class="modal-title">Edit Data Pasien</h4>
                                                 </div>
                                                 <div class="modal-body">
                                                   <form action="/action_page.php">
-                                                      <label><b>Nama Obat</b></label><br>
-                                                      <input type="text" class="form-control" name="title" value="Parasetamol" required><br>
-                                                      <label><b>Stok Obat</b></label><br>
-                                                      <input type="text" class="form-control" name="title" value="20" required><br>
-                                                      <label><b>Harga Beli</b></label><br>
-                                                      <input type="text" class="form-control" name="title" value="1500/pcs" required><br>
-                                                      <label><b>Harga Jual</b></label><br>
-                                                      <input type="text" class="form-control" name="title" value="2000/pcs" required><br>
-                                                 <!-- <label><b>Tensi Darah</b></label><br>
+                                                      <label><b>Nama Pasien</b></label><br>
+                                                      <input type="text" class="form-control" name="title" value="wahyu_nugraha" required><br>
+                                                      <label><b>Golongan Darah</b></label><br>
+                                                      <input type="password" class="form-control" name="title" value="wahyu" required><br>
+                                                      <label><b>Umur</b></label><br>
+                                                      <input type="text" class="form-control" name="title" value="Wahyu" required><br>
+                                                      <label><b>Jenis Kelamin</b></label><br>
+                                                      <input type="text" class="form-control" name="title" value="Nugraha" required><br>
+                                                      <label><b>Tensi Darah</b></label><br>
                                                       <input type="text" class="form-control" name="title" value="wahyunugraha@gmail.com" required><br>
                                                       <label><b>Alamat</b></label><br>
                                                       <input type="text" class="form-control" name="title" value="089977665544" required><br>
                                                       <label><b>No HP</b></label><br>
-                                                      <input type="text" class="form-control" name="title" value="089977665544" required><br> -->
+                                                      <input type="text" class="form-control" name="title" value="089977665544" required><br>
                                           				</form>
                                                 </div>
                                                 <div class="modal-footer">
@@ -209,6 +222,10 @@
                                           <a href=""><i class="fa fa-close fa-fw"></i>Delete</a>
                                         </td>
                                     </tr>
+<?php 
+      }
+    } 
+?>
                                 </tbody>
                             </table>
                         </div>
@@ -218,6 +235,7 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
+
             <!-- /.row -->
         </div>
         <!-- /#page-wrapper -->
