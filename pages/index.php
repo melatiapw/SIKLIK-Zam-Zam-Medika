@@ -3,6 +3,8 @@
 
 <?php 
     include 'connect.php';
+    if(!isset($_SESSION['login_user']))
+        header("Location: login.php");
 ?>
 
 <head>

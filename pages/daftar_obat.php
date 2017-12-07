@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php
-  include 'connect.php'
+<?php 
+    include 'connect.php';
+    if(!isset($_SESSION['login_user']))
+        header("Location: login.php");
 ?>
 <head>
 
@@ -98,7 +100,7 @@
                           <a href="tables.php"><i class="fa fa-table fa-fw"></i> Pasien<span class="fa arrow"></span></a>
                           <ul class="nav nav-second-level">
                               <li>
-                                  <a href="daftar_html.php">Daftar Pasien</a>
+                                  <a href="daftar_pasien.php">Daftar Pasien</a>
                               </li>
                               <li>
                                   <a href="buku_pasien.php">Buku Register Pasien</a>

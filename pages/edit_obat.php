@@ -1,7 +1,7 @@
 <?php
 include 'connect.php';
 if(!isset($_SESSION['login_user'])){
-		header("Location: index.php");
+		header("Location: login.php");
 }else{
   if(isset($_POST['edit'])){
   $id     = $_POST['id_obat'];
