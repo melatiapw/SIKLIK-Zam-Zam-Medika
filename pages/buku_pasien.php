@@ -1,10 +1,10 @@
+<?php
+      include 'connect.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-<?php 
-    include 'connect.php';
-    if(!isset($_SESSION['login_user']))
-        header("Location: login.php");
-?>
+
 <head>
 
     <meta charset="utf-8">
@@ -180,20 +180,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                  <?php
+                                      $sql = "SELECT rekam_medis.id_rekam, rekam_medis.tanggal, pasien.id_pasien, pasien.nama_pasien, pasien.alamat, dokter.nama_dokter, rekam_medis.keluhan, rekam_medis.diagnosa, informasi_pemeriksaan.nama_pemeriksaan, obat.nama_obat FROM rekam_medis JOIN pasien ON rekam_medis.id_pasien=pasien.id_pasien JOIN dokter ON rekam_medis.id_dokter=dokter.id_dokter JOIN informasi_pemeriksaan ON rekam_medis.id_pemeriksaan=informasi_pemeriksaan.id_pemeriksaan JOIN obat ON rekam_medis.id_obat=obat.id_obat";
+                                      $jalan = mysqli_query($connect, $sql);
+
+                                  while ($rows = mysqli_fetch_array($jalan)){
+                                    ?>
                                     <tr>
-                                        <td>001_00101092017</td>
-                                        <td>01/09/2017</td>
-                                        <td>001_01092017</td>
-                                        <td>Jodhi Lesmana</td>
-                                        <td>Bogor, Perumahan Yasmin</td>
-                                        <td>Yudha Prasetya</td>
-                                        <td>Pusing, Mual</td>
-                                        <td>Hepatitis C</td>
-                                        <td>Konsultasi</td>
-                                        <td>
-                                          Konidin
-                                          Panadol
-                                        </td>
+                                        <td><?php echo $rows['id_rekam']; ?></td>
+                                        <td><?php echo $rows['tanggal']; ?></td>
+                                        <td><?php echo $rows['id_pasien']; ?></td>
+                                        <td><?php echo $rows['nama_pasien']; ?></td>
+                                        <td><?php echo $rows['alamat']; ?></td>
+                                        <td><?php echo $rows['nama_dokter']; ?></td>
+                                        <td><?php echo $rows['keluhan']; ?></td>
+                                        <td><?php echo $rows['diagnosa']; ?></td>
+                                        <td><?php echo $rows['nama_pemeriksaan']; ?></td>
+                                        <td><?php echo $rows['nama_obat']; ?></td>
                                         <td>
                                           Rp 150.000
                                           <div>
@@ -287,39 +290,43 @@
                                         </td>
                                         <td>
                                           <div>
-                                            <a data-toggle="modal" data-target="#EditDesignerDataModal">
-                                            <i class="fa fa-pencil fa-fw"></i>Edit
-                                            </a>
+                                            <a href="#edit<?php echo $rows['id_rekam']; ?>" data-toggle="modal"
+                                            class="btn btn-info" style="margin:8px;">Edit</a>
                                           </div>
-                                          <div class="modal fade" id="EditDesignerDataModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                          <div class="modal fade" id="edit<?php echo $rows['id_rekam'];?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                             <div class="modal-dialog">
                                               <div class="modal-content">
                                                 <div class="modal-header">
                                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                  <h4 class="modal-title">Edit Data Pasien</h4>
+                                                  <h4 class="modal-title">Edit Data Rekam Medis</h4>
                                                 </div>
                                                 <div class="modal-body">
                                                   <form action="/action_page.php">
                                                       <label for="disabledSelect"><b>ID Rekam Medis</b></label><br>
-                                                      <input class="form-control" id="disabledInput" type="text" placeholder="001_00101092017" disabled><br>
+                                                      <input class="form-control" id="disabledInput" type="text" placeholder="<?php echo $rows['id_rekam'];?>" disabled><br>
+                                                      
                                                       <label><b>Tanggal</b></label><br>
-                                                        <input type="text" class="form-control">
+                                                        <input type="text" class="form-control" value="<?php echo $rows['tanggal'];?>" required>
                                                         <span class="input-group-btn">
                                                             <button class="btn btn-default" type="button"><i class="fa fa-calendar"></i>
                                                             </button>
                                                         </span><br>
+                                                     
                                                       <label><b>ID Pasien</b></label><br>
-                                                      <input type="text" class="form-control" name="title" value="Wahyu" required><br>
+                                                      <input type="text" class="form-control" value="<?php echo $rows['id_pasien'];?>" required><br>
                                                       <label><b>Dokter</b></label><br>
-                                                        <select class="form-control">
+                                                        <select class="form-control" value="<?php echo $rows['nama_dokter'];?>" required>
                                                             <option>Adi Santoso</option>
                                                             <option>Yudha Pasetya</option>
                                                             <option>Riana Maharani</option>
                                                         </select><br>
+                                                      
                                                       <label><b>Keluhan</b></label><br>
-                                                      <textarea class="form-control" rows="3" value="Pusing, Mual"></textarea><br>
+                                                      <textarea class="form-control" rows="3" value="<?php echo $rows['keluhan'];?>" required></textarea><br>
+                                                      
                                                       <label><b>Diagnosis</b></label><br>
-                                                      <textarea class="form-control" rows="3" value="Hepatitis C"></textarea><br>
+                                                      <textarea class="form-control" rows="3" value="<?php echo $rows['diagnosa'];?>" required></textarea><br>
+                                                      
                                                       <div class="container">
                                                         <label><b>Pemeriksaan</b></label><br>
                                                         <select id="multiple-checkboxes" multiple="multiple">
@@ -341,9 +348,14 @@
                                               </div>
                                             </div>
                                           </div>
-                                          <a href=""><i class="fa fa-close fa-fw"></i>Delete</a>
+                                        
+                                        <!--Delete rekam medis-->                                      
+                                            <a onclick="return confirm('Yakin ingin menghapus data rekam medis?')" href="hub_delete_rekam.php?id=<?php echo $rows['id_rekam'] ?>" class="btn btn-danger" style="margin:8px;">Delete</a>
+                                        <!--Delete rekam medis selesai-->
+                                        
                                         </td>
                                     </tr>
+                                    <?php }  ?>  
                                 </tbody>
                             </table>
                         </div>
@@ -395,5 +407,4 @@
     </script>
 
 </body>
-
 </html>

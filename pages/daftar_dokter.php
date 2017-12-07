@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php 
+<?php
     include 'connect.php';
     if(!isset($_SESSION['login_user']))
         header("Location: login.php");
@@ -140,10 +140,46 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Daftar Pasien</h1>
+                    <h1 class="page-header">Daftar Dokter</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
+
+            <!--Tambah data pasien-->
+            <a data-toggle="modal" data-target="#TambahData" href="" class="btn btn-primary" style="margin-bottom:8px;">Tambah Dokter</a>
+
+                                        <div class="modal fade" id="TambahData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                            <div class="modal-dialog">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                  <h4 class="modal-title">Tambah Dokter</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                  <form method="POST" >
+                                                      <label><b>Nama Dokter</b></label><br>
+                                                      <input type="text" class="form-control" name="namadokter"  required><br>
+                                                      <label><b>No HP Dokter</b></label><br>
+                                                      <input type="text" class="form-control" name="hpdokter"  required><br>
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Batal</button>
+                                                  <input type="submit" class="btn btn-sm btn-success" value="Simpan" name="simpan"/>
+                                                </div>
+                                                </form>
+                                                <?php
+                                                if(@$_POST['simpan']){
+                                                  $namadokter = @$_POST ['namadokter'];
+                                                  $hpdokter = @$_POST ['hpdokter'];
+                                                  mysqli_query($connect, "INSERT INTO dokter(nama_dokter,no_telpon_dokter) values('$namadokter','$hpdokter')") or die ($connect->error);
+                                                    //header("location:?page=daftar_pasien");
+                                                }
+                                                ?>
+                                              </div>
+                                            </div>
+                                          </div>
+            <!--Tambah data pasien selesai-->
+
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
@@ -160,51 +196,78 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>001_01092017</td>
-                                        <td>Jodhi Lesmana</td>
-                                        <td>082934567821</td>
+                                      <?php
+                                        $sql = "SELECT * FROM dokter  ORDER BY id_dokter ASC" ;
+                                        $jalan = mysqli_query($connect, $sql);
+                                        while ($rows = mysqli_fetch_array($jalan)){
+                                      ?>
+                                      <tr>
+                                        <td><?php echo $rows['id_dokter']; ?></td>
+                                        <td><?php echo $rows['nama_dokter']; ?></td>
+                                        <td><?php echo $rows['no_telpon_dokter']; ?></td>
                                         <td>
+                                        <!--Tampil data pasien selesai-->
+
+                                        <!--Edit data dokter-->
                                           <div>
-                                            <a data-toggle="modal" data-target="#EditDesignerDataModal">
-                                            <i class="fa fa-pencil fa-fw"></i>Edit
-                                            </a>
+                                            <a href="#edit<?php echo $rows['id_dokter']; ?>" data-toggle="modal"
+                                            class="btn btn-info" style="margin:8px;">Edit</a>
                                           </div>
-                                          <div class="modal fade" id="EditDesignerDataModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+                                          <div class="modal fade" id="edit<?php echo $rows['id_dokter'];?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                             <div class="modal-dialog">
                                               <div class="modal-content">
                                                 <div class="modal-header">
                                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                  <h4 class="modal-title">Edit Data Pasien</h4>
+                                                  <h4 class="modal-title">Edit Data Dokter</h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                  <form action="/action_page.php">
-                                                      <label><b>Nama Pasien</b></label><br>
-                                                      <input type="text" class="form-control" name="title" value="wahyu_nugraha" required><br>
-                                                      <label><b>Golongan Darah</b></label><br>
-                                                      <input type="password" class="form-control" name="title" value="wahyu" required><br>
-                                                      <label><b>Umur</b></label><br>
-                                                      <input type="text" class="form-control" name="title" value="Wahyu" required><br>
-                                                      <label><b>Jenis Kelamin</b></label><br>
-                                                      <input type="text" class="form-control" name="title" value="Nugraha" required><br>
-                                                      <label><b>Tensi Darah</b></label><br>
-                                                      <input type="text" class="form-control" name="title" value="wahyunugraha@gmail.com" required><br>
-                                                      <label><b>Alamat</b></label><br>
-                                                      <input type="text" class="form-control" name="title" value="089977665544" required><br>
-                                                      <label><b>No HP</b></label><br>
-                                                      <input type="text" class="form-control" name="title" value="089977665544" required><br>
-                                          				</form>
+                                                  <form method="POST">
+                                                    <label><b>Nama Dokter</b></label><br>
+                                                    <input type="hidden" name="id" value="<?php echo $rows['id_dokter']; ?>" >
+                                                    <input type="text" class="form-control" name="namadokter" value="<?php echo $rows['nama_dokter']; ?>" required><br>
+                                                    <label><b>No HP Dokter</b></label><br>
+                                                    <input type="number" class="form-control" name="hpdokter" value="<?php echo $rows['no_telpon_dokter']; ?>" required><br>
+
                                                 </div>
                                                 <div class="modal-footer">
                                                   <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Batal</button>
-                                                  <button type="button" class="btn btn-sm btn-success">Simpan</button>
+                                                  <input type="submit" class="btn btn-sm btn-success" value="Edit" name="edit"/>
                                                 </div>
+                                                </form>
+                                                <?php
+
+                                                if(isset($_POST['edit'])){
+                                                  $id = $_POST['id'];
+                                                  $namadokter = $_POST['namadokter'];
+                                                  $hpdokter = $_POST['hpdokter'];
+                                                  $sql = "UPDATE dokter SET
+                                                  nama_dokter='$namadokter', no_telpon_dokter='$hpdokter'
+                                                  WHERE id_dokter ='$id'";
+                                                  if ($connect->query($sql) === TRUE) {
+                                                      echo '<script>window.location.href="daftar_dokter.php"</script>';
+                                                  } else {
+                                                      echo "Error updating record: " . $connect->error;
+                                                  }
+                                              }
+
+                                                      ?>
+
+
                                               </div>
                                             </div>
                                           </div>
-                                          <a href=""><i class="fa fa-close fa-fw"></i>Delete</a>
-                                        </td>
-                                    </tr>
+                                          <!--Edit data pasien selesai-->
+
+                                          <!--Delete data pasien-->
+                                              <a onclick="return confirm('Yakin ingin menghapus data dokter?')" href="hub_delete_dokter.php?id=<?php echo $rows['id_dokter'] ?>" class="btn btn-danger" style="margin:8px;">Delete</a>
+                                          <!--Delete data pasien selesai-->
+
+
+                                            </div>
+                                          </td>
+                                      </tr>
+                                      <?php }  ?>
                                 </tbody>
                             </table>
                         </div>

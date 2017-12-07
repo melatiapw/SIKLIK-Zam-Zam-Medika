@@ -144,6 +144,57 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
+            <!--Tambah data pasien-->
+            <a data-toggle="modal" data-target="#TambahData" href="" class="btn btn-primary" style="margin-bottom:8px;">Tambah Pemeriksaan</a>
+       
+                                        <div class="modal fade" id="TambahData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                            <div class="modal-dialog">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                  <h4 class="modal-title">Tambah Data Pemeriksaan</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                  <form method="POST" >
+                                                      <label><b>Jenis Pemeriksaan</b></label><br>
+                                                      <input type="text" class="form-control" name="pemeriksaan" required><br>
+                                                      <label><b>Biaya </b></label>
+                                                      <!--<input type="text" class="form-control" name="goldar"  required><br>-->
+                                                      <label><b>Klinik</b></label>
+                                                      <input type="text" class="form-control" name="biayaklinik"  required><br>
+                                                      <label><b>Biaya Dokter</b></label>
+                                                      <input type="text" class="form-control" name="biayadokter"  required><br>
+                                                      <label><b>Biaya Administrasi</b></label>
+                                                      <input type="text" class="form-control" name="biayaadministrasi"  required><br>
+                                                      <label><b>Total Biaya</b></label><br>
+                                                      <input type="text" class="form-control" name="totalbiaya"  required><br>
+                                                  
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Batal</button>
+                                                  <input type="submit" class="btn btn-sm btn-success" value="Simpan" name="simpan"/>
+                                                </div>
+                                                </form>
+                                                <?php
+                                                if(@$_POST['simpan']){
+                                                  $pasien = @$_POST ['pasien'];
+                                                  $goldar = @$_POST ['goldar'];
+                                                  $umur = @$_POST ['umur'];
+                                                  $jk = @$_POST ['jk'];
+                                                  $tensi = @$_POST ['tensi'];
+                                                  $alamat = @$_POST ['alamat'];
+                                                  $nomor = @$_POST ['nomor'];
+                                                  mysqli_query($connect, "INSERT INTO pasien(nama_pasien,golongan_darah,umur,jenis_kelamin,tensi_darah,alamat,no_telpon) values('$pasien','$goldar','$umur','$jk','$tensi','$alamat','$nomor')") or die ($connect->error);
+                                                    //header("location:?page=daftar_pasien");
+                                                }
+
+
+                                                ?>
+                                              </div>
+                                            </div>
+                                          </div>
+            <!--Tambah data pasien selesai-->
+
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
@@ -154,7 +205,7 @@
                                 <thead>
                                     <tr>
                                         <th rowspan="2">ID Pemeriksaan</th>
-                                        <th rowspan="2">Nama Pemeriksaan</th>
+                                        <th rowspan="2">Jenis Pemeriksaan</th>
                                         <th colspan="3">Biaya</th>
                                         <th rowspan="2">Total Biaya</th>
                                         <th></th>
@@ -190,15 +241,15 @@
                                                   <form action="/action_page.php">
                                                       <label><b>ID Pemeriksaan</b></label><br>
                                                       <input type="text" class="form-control" name="title" value="wahyu_nugraha" required><br>
-                                                      <label><b>Nama Pemeriksaan</b></label><br>
+                                                      <label><b>Jenis Pemeriksaan</b></label><br>
                                                       <input type="password" class="form-control" name="title" value="wahyu" required><br>
-                                                      <label><b>Biaya</b></label><br>
+                                                      <label><b>Biaya :</b></label><br><br>
                                                       <!-- <input type="text" class="form-control" name="title" value="Wahyu" required><br> -->
-                                                      <label><b>Klinik</b></label>
+                                                      <label><b>Klinik</b></label><br>
                                                       <input type="text" class="form-control" name="title" value="Nugraha" required><br>
-                                                      <label><b>Dokter</b></label>
+                                                      <label><b>Dokter</b></label><br>
                                                       <input type="text" class="form-control" name="title" value="wahyunugraha@gmail.com" required><br>
-                                                      <label><b>Administrasi</b></label>
+                                                      <label><b>Administrasi</b></label><br>
                                                       <input type="text" class="form-control" name="title" value="089977665544" required><br>
                                                       <label><b>Total Biaya</b></label><br>
                                                       <input type="text" class="form-control" name="title" value="089977665544" required><br>
