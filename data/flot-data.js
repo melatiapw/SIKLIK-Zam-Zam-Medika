@@ -1,4 +1,7 @@
 //Flot Line Chart
+
+
+
 $(document).ready(function() {
 
     var offset = 0;
@@ -49,10 +52,13 @@ $(document).ready(function() {
     }
 });
 
+
+
+
 //Flot Pie Chart
 $(function() {
 
-    var data = [{
+    var dataMasuk = [{
         label: "Pasien",
         data: 4
     }, {
@@ -66,10 +72,27 @@ $(function() {
         data: 20
       }, {
           label: "Kebersihan",
-          data: 20
+        data: 25
     }];
 
-    var plotObj = $.plot($("#pie-chart-pemasukan"), data, {
+    var dataKeluar = [{
+        label: "Pasien",
+        data: 4
+    }, {
+        label: "Obat",
+        data: 3
+    }, {
+        label: "Series 2",
+        data: 9
+    }, {
+        label: "Series 3",
+        data: 20
+      }, {
+          label: "Kebersihan",
+        data: 25
+    }];
+
+    var plotObj = $.plot($("#pie-chart-pemasukan"), dataMasuk, {
         series: {
             pie: {
                 show: true
@@ -89,7 +112,32 @@ $(function() {
         }
     });
 
-    var plotObj = $.plot($("#pie-chart-pengeluaran"), data, {
+    
+
+    var dataTreatment = [{
+        label: "Dokter Umum",
+        data: jenis1
+    }, {
+        label: "Nebulizer",
+        data: jenis2
+    }, {
+        label: "Khitan",
+        data: jenis3
+    }, {
+        label: "Bedah Minor",
+        data: jenis4
+    }, {
+        label: "Cek Gula, Asam Urat,dan Kolestrol",
+        data: jenis5
+    }, {
+        label: "Suntik KB",
+        data: jenis6
+    }, {
+        label: "Suntik Vitamin C",
+        data: jenis7
+    }];
+
+    var plotObj = $.plot($("#pie-chart-pengeluaran"), dataKeluar, {
         series: {
             pie: {
                 show: true
@@ -109,7 +157,7 @@ $(function() {
         }
     });
 
-    var plotObj = $.plot($("#pie-chart-treatment"), data, {
+    var plotObj = $.plot($("#pie-chart-treatment"), dataTreatment, {
         series: {
             pie: {
                 show: true

@@ -185,8 +185,13 @@
                                     <i class="fa fa-user fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">12</div>
-                                    <div>Pasien Minggu Ini</div>
+                                    <div class="huge"><?php 
+                                        $bulan_query = "SELECT * FROM pasien WHERE MONTH(tanggal_daftar)=MONTH(CURDATE())";
+                                        $b_query = mysqli_query($connection, $bulan_query);
+                                        $total_bulan_query = mysqli_num_rows($b_query);
+                                        echo $total_bulan_query;
+                                    ?></div>
+                                    <div>Pasien Bulan Ini</div>
                                 </div>
                             </div>
                         </div>
@@ -372,6 +377,47 @@
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
 
+
+    <!-- Query buat data pie chart -->
+    <?php
+        $r_medis_query1 = "SELECT * FROM rekam_medis WHERE id_pemeriksaan = '1'";
+        $query1 = mysqli_query($connection, $r_medis_query1);
+        $var1 = mysqli_num_rows($query1);
+
+        $r_medis_query2 = "SELECT * FROM rekam_medis WHERE id_pemeriksaan = '2'";
+        $query2 = mysqli_query($connection, $r_medis_query2);
+        $var2 = mysqli_num_rows($query2);
+
+        $r_medis_query3 = "SELECT * FROM rekam_medis WHERE id_pemeriksaan = '3'";
+        $query3 = mysqli_query($connection, $r_medis_query3);
+        $var3 = mysqli_num_rows($query3);
+
+        $r_medis_query4 = "SELECT * FROM rekam_medis WHERE id_pemeriksaan = '4'";
+        $query4 = mysqli_query($connection, $r_medis_query4);
+        $var4 = mysqli_num_rows($query4);
+
+        $r_medis_query5 = "SELECT * FROM rekam_medis WHERE id_pemeriksaan = '5'";
+        $query5 = mysqli_query($connection, $r_medis_query5);
+        $var5 = mysqli_num_rows($query5);
+
+        $r_medis_query6 = "SELECT * FROM rekam_medis WHERE id_pemeriksaan = '6'";
+        $query6 = mysqli_query($connection, $r_medis_query6);
+        $var6 = mysqli_num_rows($query6);
+
+        $r_medis_query7 = "SELECT * FROM rekam_medis WHERE id_pemeriksaan = '7'";
+        $query7 = mysqli_query($connection, $r_medis_query7);
+        $var7 = mysqli_num_rows($query7);
+    ?>
+
+    <script type="text/javascript">
+        var jenis1 = <?php echo $var1 ?>;
+        var jenis2 = <?php echo $var2 ?>;
+        var jenis3 = <?php echo $var3 ?>;
+        var jenis4 = <?php echo $var4 ?>;
+        var jenis5 = <?php echo $var5 ?>;
+        var jenis6 = <?php echo $var6 ?>;
+        var jenis7 = <?php echo $var7 ?>;
+    </script>
 </body>
 
 </html>
