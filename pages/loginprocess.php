@@ -26,6 +26,7 @@ else
 	$rows = mysqli_num_rows($query);
 if ($rows == 1) {
 	$_SESSION['login_user']=$user; // Initializing Session
+	$queryline = mysqli_query($connection, "UPDATE user SET last_login = CURRENT_TIMESTAMP() WHERE username = '$user'");
 ?>
 	<script language="javascript">alert("Success!"); document.location="index.php";</script>;
 <?php
