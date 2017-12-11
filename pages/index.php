@@ -43,7 +43,7 @@
 
 <body>
     <?php
-        //date_default_timezone_set('Asia/Jakarta');
+        date_default_timezone_set('Asia/Jakarta');
         //$date = date('Y-m-d H:i:s');
         //echo $date;
 
@@ -256,41 +256,12 @@
             </div>
             <!-- /.row -->
             <div class="row">
-                <div class="col-lg-4">
-                  <div class="panel panel-default">
-                      <div class="panel-heading">
-                          Pendapatan Bulan Ini
-                      </div>
-                      <!-- /.panel-heading -->
-                      <div class="panel-body">
-                          <div class="flot-chart">
-                              <div class="flot-chart-content" id="pie-chart-pemasukan"></div>
-                          </div>
-                      </div>
-                      <!-- /.panel-body -->
-                  </div>
-                </div>
+                
 
-                <div class="col-lg-4">
+                <div>
                   <div class="panel panel-default">
                       <div class="panel-heading">
-                          Pengeluaran Bulan Ini
-                      </div>
-                      <!-- /.panel-heading -->
-                      <div class="panel-body">
-                          <div class="flot-chart">
-                              <div class="flot-chart-content" id="pie-chart-pengeluaran"></div>
-                          </div>
-                      </div>
-                      <!-- /.panel-body -->
-                  </div>
-                </div>
-                <!-- /.col-lg-4 -->
-
-                <div class="col-lg-4">
-                  <div class="panel panel-default">
-                      <div class="panel-heading">
-                          Jenis-Jenis Pengobatan
+                          Frekuensi Jenis Pengobatan
                       </div>
                       <!-- /.panel-heading -->
                       <div class="panel-body">
@@ -318,29 +289,31 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Pegawai</th>
-                                        <th>Waktu</th>
-                                        <th>Lama Login</th>
+                                        <th>Waktu Logout</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php
+                                            $i = 1;
+                                            $sql = "SELECT * FROM user WHERE username != '$user_check'";
+                                            $data = mysqli_query($connection, $sql);
+                                            if (mysqli_num_rows($data)==0){
+                                                echo 'Belum ada user lain terdaftar';
+                                            }else{
+                                                while($d = mysqli_fetch_assoc($data)){
+                                    ?>
                                     <tr>
-                                        <td>1</td>
-                                        <td>Nina</td>
-                                        <td>18.36</td>
-                                        <td>03:00:14</td>
+                                        <td><?php echo $i ?></td>
+                                        <td><?php echo $d['username'] ?></td>
+                                        <td><?php echo $d['last_logout'] ?></td>
                                     </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Risa</td>
-                                        <td>07.28</td>
-                                        <td>05:15:21</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Tia</td>
-                                        <td>12.47</td>
-                                        <td>00:15:24</td>
-                                    </tr>
+                                    <?php
+                                            $i++;
+
+                                            };
+                                        };
+                                    ?>
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -422,6 +395,7 @@
         var jenis5 = <?php echo $var5 ?>;
         var jenis6 = <?php echo $var6 ?>;
         var jenis7 = <?php echo $var7 ?>;
+
     </script>
 </body>
 
