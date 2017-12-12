@@ -177,14 +177,12 @@
                                                 </form>
                                                 <?php
                                                 if(@$_POST['simpan']){
-                                                  $pasien = @$_POST ['pasien'];
-                                                  $goldar = @$_POST ['goldar'];
-                                                  $umur = @$_POST ['umur'];
-                                                  $jk = @$_POST ['jk'];
-                                                  $tensi = @$_POST ['tensi'];
-                                                  $alamat = @$_POST ['alamat'];
-                                                  $nomor = @$_POST ['nomor'];
-                                                  mysqli_query($connect, "INSERT INTO pasien(nama_pasien,golongan_darah,umur,jenis_kelamin,tensi_darah,alamat,no_telpon) values('$pasien','$goldar','$umur','$jk','$tensi','$alamat','$nomor')") or die ($connect->error);
+                                                  $biayaklinik = @$_POST ['biayaklinik'];
+                                                  $biayadokter = @$_POST ['biayadokter'];
+                                                  $biayaadministrasi = @$_POST ['biayaadministrasi'];
+                                                  
+                                                  
+                                                  mysqli_query($connect, "INSERT INTO informasi_pemeriksaan(biaya_klinik,biaya_dokter,biaya_administrasi) values('$biayaklinik','$biayadokter','$biayaadministrasi')") or die ($connect->error);
                                                     //header("location:?page=daftar_pasien");
                                                 }
 
@@ -217,13 +215,24 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php
+                                      $sql = "SELECT * FROM informasi_pemeriksaan  ORDER BY id_pemeriksaan ASC" ;
+                                      $jalan = mysqli_query($connect, $sql);
+  
+                                      while ($rows = mysqli_fetch_array($jalan)){
+                                    ?>
                                     <tr>
-                                        <td>001_01092017</td>
-                                        <td>Jodhi Lesmana</td>
-                                        <td>O</td>
-                                        <td>20</td>
-                                        <td>L</td>
-                                        <td>120/80</td>
+                                        <td><?php echo $rows['id_pemeriksaan']; ?></td>
+                                        <td><?php echo $rows['nama_pemeriksaan']; ?></td>
+                                        <td><?php echo $rows['biaya_klinik']; ?></td>
+                                        <td><?php echo $rows['biaya_dokter']; ?></td>
+                                        <td><?php echo $rows['biaya_administrasi']; ?></td>
+                                        <?php $tott = $rows['biaya_klinik']+$rows['biaya_dokter']+$rows['biaya_administrasi'];
+                                                       ?>
+                                        <td><?php echo $tott; ?></td>
+                                        <!--Tampil data pemeriksaan selesai-->
+
+                                        <!--Edit data pasien-->
                                         <td>
                                           <div>
                                             <a data-toggle="modal" data-target="#EditDesignerDataModal">
@@ -235,24 +244,27 @@
                                               <div class="modal-content">
                                                 <div class="modal-header">
                                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                  <h4 class="modal-title">Edit Data Pasien</h4>
+                                                  <h4 class="modal-title">Edit Data Jenis Pemeriksaan</h4>
                                                 </div>
                                                 <div class="modal-body">
                                                   <form action="/action_page.php">
-                                                      <label><b>ID Pemeriksaan</b></label><br>
-                                                      <input type="text" class="form-control" name="title" value="wahyu_nugraha" required><br>
-                                                      <label><b>Jenis Pemeriksaan</b></label><br>
-                                                      <input type="password" class="form-control" name="title" value="wahyu" required><br>
+                                                      
+                                                      <label><b>Nama Pemeriksaan</b></label><br>
+                                                      <input type="hidden" name="id" value="<?php echo $rows['id_pemeriksaan']; ?>" >
+                                                      <input type="text" class="form-control" name="pasien" value="<?php echo $rows['nama_pemeriksaan']; ?>" required><br>
                                                       <label><b>Biaya :</b></label><br><br>
                                                       <!-- <input type="text" class="form-control" name="title" value="Wahyu" required><br> -->
                                                       <label><b>Klinik</b></label><br>
-                                                      <input type="text" class="form-control" name="title" value="Nugraha" required><br>
+                                                      <input type="text" class="form-control" name="goldar" value="<?php echo $rows['biaya_klinik']; ?>" required><br>
                                                       <label><b>Dokter</b></label><br>
-                                                      <input type="text" class="form-control" name="title" value="wahyunugraha@gmail.com" required><br>
+                                                      <input type="text" class="form-control" name="goldar" value="<?php echo $rows['biaya_dokter']; ?>" required><br>
                                                       <label><b>Administrasi</b></label><br>
-                                                      <input type="text" class="form-control" name="title" value="089977665544" required><br>
+                                                      <input type="text" class="form-control" name="goldar" value="<?php echo $rows['biaya_administrasi']; ?>" required><br>
                                                       <label><b>Total Biaya</b></label><br>
-                                                      <input type="text" class="form-control" name="title" value="089977665544" required><br>
+                                                      <?php
+                                                        $total_biaya=$rows['biaya_klinik']+$rows['biaya_dokter']+$rows['biaya_administrasi'];
+                                                      ?>
+                                                      <input type="text" class="form-control" name="goldar" value="<?php echo $total_biaya; ?>" required><br>
                                           				</form>
                                                 </div>
                                                 <div class="modal-footer">
@@ -263,6 +275,9 @@
                                             </div>
                                           </div>
                                           <a href=""><i class="fa fa-close fa-fw"></i>Delete</a>
+                                          <?php
+                                            };
+                                          ?>
                                         </td>
                                     </tr>
                                 </tbody>

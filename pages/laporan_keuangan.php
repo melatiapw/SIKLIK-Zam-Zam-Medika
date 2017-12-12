@@ -153,7 +153,7 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="flot-chart">
-                                <div class="flot-chart-content" id="flot-line-chart"></div>
+                                <div class="flot-chart-content" id="flot-line-keuangan"></div>
                             </div>
                         </div>
                         <!-- /.panel-body -->
